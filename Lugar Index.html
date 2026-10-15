@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Comunitaria</title>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- BARRA SUPERIOR (HEADER) --- */
+        header {
+            background-color: #1e293b;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            background-color: #2563eb;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .btn-header {
+            background: #334155;
+            color: white;
+            border: none;
+            padding: 0.5rem 0.9rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .btn-header:hover {
+            background: #475569;
+        }
+
+        /* --- NAVEGACIÓN PRINCIPAL --- */
+        nav {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            color: #2563eb;
+        }
+
+        .nav-btn.active {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+        }
+
+        /* --- CONTENIDO PRINCIPAL --- */
+        main {
+            flex: 1;
+            max-width: 900px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-content {
+            display: none; /* Ocultamos todas por defecto */
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-content.active {
+            display: block; /* Solo mostramos la sección activa */
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+            color: #1e293b;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .card-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #e2e8f0;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header con Logo, Perfil y Ajustes -->
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <span>🌐</span> Portal Vecinal
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="btn-header" onclick="alert('Abriendo Ajustes...')">⚙️ Ajustes</button>
+            <button class="btn-header" onclick="alert('Abriendo Perfil...')">👤 Perfil</button>
+        </div>
+    </header>
+
+    <!-- Navegación entre las 4 secciones -->
+    <nav>
+        <button class="nav-btn active" onclick="cambiarSeccion('comunidad', this)">Comunidad</button>
+        <button class="nav-btn" onclick="cambiarSeccion('propuestas', this)">Propuestas</button>
+        <button class="nav-btn" onclick="cambiarSeccion('quejas', this)">Quejas</button>
+        <button class="nav-btn" onclick="cambiarSeccion('noticias', this)">Noticias</button>
+    </nav>
+
+    <!-- Contenedor Principal de Secciones -->
+    <main>
+
+        <!-- 1. Comunidad -->
+        <section id="comunidad" class="section-content active">
+            <h2>Comunidad</h2>
+            <p>Espacio para la interacción general entre los miembros del vecindario.</p>
+            <div class="card-box">
+                👥 <strong>Miembros activos:</strong> 120 vecinos registrados.
+            </div>
+        </section>
+
+        <!-- 2. Propuestas para la comunidad -->
+        <section id="propuestas" class="section-content">
+            <h2>Propuestas para la Comunidad</h2>
+            <p>Comparte y vota ideas para mejorar nuestro entorno.</p>
+            <div class="card-box">
+                💡 <strong>Última propuesta:</strong> Instalación de nuevas luminarias en el parque principal.
+            </div>
+        </section>
+
+        <!-- 3. Quejas de la comunidad -->
+        <section id="quejas" class="section-content">
+            <h2>Quejas de la Comunidad</h2>
+            <p>Reporta problemas o inconvenientes en la zona para ser atendidos.</p>
+            <div class="card-box">
+                ⚠️ <strong>Reporte reciente:</strong> Fuga de agua sobre la calle principal.
+            </div>
+        </section>
+
+        <!-- 4. Noticias de la comunidad -->
+        <section id="noticias" class="section-content">
+            <h2>Noticias de la Comunidad</h2>
+            <p>Mantente al día con los eventos, comunicados y novedades locales.</p>
+            <div class="card-box">
+                📢 <strong>Comunicado:</strong> Mantenimiento programado de áreas verdes este sábado.
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Plataforma Comunitaria. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- JavaScript para alternar entre las secciones -->
+    <script>
+        function cambiarSeccion(idSeccion, botonPresionado) {
+            // Ocultar todas las secciones
+            const secciones = document.querySelectorAll('.section-content');
+            secciones.forEach(sec => sec.classList.remove('active'));
+
+            // Quitar clase activa de todos los botones del menú
+            const botones = document.querySelectorAll('.nav-btn');
+            botones.forEach(btn => btn.classList.remove('active'));
+
+            // Mostrar la sección seleccionada y marcar el botón activo
+            document.getElementById(idSeccion).classList.add('active');
+            botonPresionado.classList.add('active');
+        }
+    </script>
+</body>
+</html>
